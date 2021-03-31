@@ -4,13 +4,14 @@
   "description": "Visualisation tool for planes",
   "main": "index.js",
   "scripts": {
+    "heroku-prebuild": "npm install --dev",
     "prettier": "prettier . --write --print-width 200 --tab-width 2 --single-quote",
-    "start": "npm install && webpack --mode production && node server/index.js",
-    "webpack:dev": "webpack --mode development --watch",
-    "webpack:prod": "webpack --mode production",
     "server:dev": "nodemon server/index.js",
     "server:prod": "node server/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm install && webpack --mode production && node server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack:dev": "webpack --mode development --watch",
+    "webpack:prod": "webpack --mode production"
   },
   "author": "Alexandre Georges",
   "license": "ISC",
