@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prettier": "prettier . --write --print-width 200 --tab-width 2 --single-quote",
-    "start": "nodemon server/index.js",
+    "start": "webpack --mode production && node server/index.js",
     "webpack:dev": "webpack --mode development --watch",
     "webpack:prod": "webpack --mode production",
     "server:dev": "nodemon server/index.js",
