@@ -28,7 +28,7 @@ webSocketServer.on('close', () => {
 webSocketServer.on('connection', async (context) => {
   context.isAlive = true;
   context.on('pong', heartbeat);
-  console.log(`${webSocketServer.clients} client(s) connected`);
+  console.log(`${webSocketServer.clients.length} client(s) connected`);
 
   context.on('message', (message) => {
     subscriptions.create(
@@ -45,7 +45,7 @@ webSocketServer.on('connection', async (context) => {
   });
 
   context.on('close', () => {
-    console.log(`Connection closed: ${webSocketServer.clients.size} client(s) remaining`);
+    console.log(`Connection closed: ${webSocketServer.clients.length} client(s) remaining`);
   });
 });
 
@@ -55,7 +55,7 @@ module.exports = (request, socket, head) => {
       webSocketServer.emit('connection', ws, request);
     });
   } catch (exception) {
-    console.log('upgrade exception', exception);
+    console.error('upgrade exception', exception);
     socket.destroy();
     return;
   }

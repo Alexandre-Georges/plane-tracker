@@ -19,7 +19,7 @@ const executeQuery = async ({ request, variables }) => {
   }
   const validationErrors = validate(schema, parsedQuery, [...specifiedRules]);
   if (validationErrors.length > 0) {
-    console.log('validationErrors', validationErrors);
+    console.error('validationErrors', validationErrors);
     return { requestId: variables.requestId, error: { code: 'QUERY_VALIDATION_ERROR' } };
   }
   let result = null;
@@ -27,7 +27,7 @@ const executeQuery = async ({ request, variables }) => {
   try {
     result = await execute(schema, parsedQuery, null, {}, variables);
   } catch (exception) {
-    console.log('execute', exception);
+    console.error('execute', exception);
     return { requestId: variables.requestId, error: { code: 'QUERY_EXECUTION_ERROR' } };
   }
 

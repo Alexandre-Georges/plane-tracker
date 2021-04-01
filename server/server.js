@@ -34,4 +34,3 @@ server.on('upgrade', function upgrade(request, socket, head) {
 });
 
 server.listen(PORT);
-console.log('done');
