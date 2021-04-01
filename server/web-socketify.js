@@ -28,7 +28,7 @@ webSocketServer.on('close', () => {
 webSocketServer.on('connection', async (context) => {
   context.isAlive = true;
   context.on('pong', heartbeat);
-  console.log(`${webSocketServer.clients.length} client(s) connected`);
+  console.log(`${webSocketServer.clients.size} client(s) connected`);
 
   context.on('message', (message) => {
     subscriptions.create(
@@ -45,7 +45,7 @@ webSocketServer.on('connection', async (context) => {
   });
 
   context.on('close', () => {
-    console.log(`Connection closed: ${webSocketServer.clients.length} client(s) remaining`);
+    console.log(`Connection closed: ${webSocketServer.clients.size} client(s) remaining`);
   });
 });
 
