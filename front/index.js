@@ -17,16 +17,18 @@ const updateBounds = (map) => {
 };
 
 const setMarkerPopup = (marker, plane) => {
-  marker.setPopup(new mapboxgl.Popup().setHTML(`
+  marker.setPopup(
+    new mapboxgl.Popup().setHTML(`
   <h1>${plane.icao24} - ${plane.callSign}</h1>
   <ul>
     <li>Country of origin: ${plane.originCountry}</li>
-    <li>Last position time: ${DateTime.fromSeconds(plane.lastPositionTime).toFormat('dd \'of\' LLLL yyyy - HH:mm:ss')}</li>
+    <li>Last position time: ${DateTime.fromSeconds(plane.lastPositionTime).toFormat("dd 'of' LLLL yyyy - HH:mm:ss")}</li>
     <li>Velocity (m/s): ${plane.velocity}</li>
     <li>Vertical rate (m/s): ${plane.verticalRate}</li>
     <li>Is on the ground: ${plane.isOnGround}</li>
     <li>Altitude (m): ${plane.altitude}</li>
-  </ul>`));
+  </ul>`)
+  );
 };
 
 const addMarker = (map, plane) => {
@@ -108,13 +110,13 @@ if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(
     (position) => {
       if (!hasMoved) {
-        map.setCenter([ position.coords.longitude, position.coords.latitude ]);
+        map.setCenter([position.coords.longitude, position.coords.latitude]);
         updateSubscription(map);
       }
     },
     (error) => {
       console.error(error);
-    },
+    }
   );
 }
 
