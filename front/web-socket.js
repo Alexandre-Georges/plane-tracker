@@ -1,5 +1,5 @@
 const create = (onStart, receiver) => {
-  const socket = new WebSocket(`ws://${window.location.host}`);
+  const socket = new WebSocket(`${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}`);
 
   socket.addEventListener('open', (event) => {
     onStart(event);
