@@ -8,7 +8,7 @@
     "prettier": "prettier . --write --print-width 200 --tab-width 2 --single-quote",
     "server:dev": "nodemon server/index.js",
     "server:prod": "node server/index.js",
-    "start": "npm install && webpack --mode production && node server/index.js",
+    "start": "npm install --dev && webpack --mode production && node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack:dev": "webpack --mode development --watch",
     "webpack:prod": "webpack --mode production"
